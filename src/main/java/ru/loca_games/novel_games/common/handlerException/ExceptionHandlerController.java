@@ -20,6 +20,7 @@ public class ExceptionHandlerController {
     public void handleException(HttpServletResponse response, Exception e) throws IOException {
         log.warn("Unhandled error. Message: " + e.getMessage());
         response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value());
+        response.getWriter().println(e.getMessage());
     }
 
     @ExceptionHandler(value = {EntityNotFoundException.class, UserNotFoundException.class, BookNotFoundException.class})
