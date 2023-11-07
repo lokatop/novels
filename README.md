@@ -1,5 +1,4 @@
 # novels
-Test
 
 HOW start:
 
