@@ -1,5 +1,7 @@
 package ru.loca_games.novel_games;
 
+import lombok.AllArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.loca_games.novel_games.book.model.Book;
 import ru.loca_games.novel_games.book.model.dto.BookDto;
@@ -10,16 +12,13 @@ import ru.loca_games.novel_games.user.service.UserService;
 import javax.validation.Valid;
 
 @RestController
+@Validated
+@AllArgsConstructor
 @RequestMapping(value = "/novel", produces =  "application/json")
 public class Controller {
 
     final BookService bookService;
     final UserService userService;
-
-    public Controller(BookService bookService, UserService userService) {
-        this.bookService = bookService;
-        this.userService = userService;
-    }
 
     @GetMapping(path = "/books")
     public Iterable<Book> getBooks() {
