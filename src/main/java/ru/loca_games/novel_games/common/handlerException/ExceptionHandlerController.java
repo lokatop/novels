@@ -18,7 +18,8 @@ public class ExceptionHandlerController {
 
     @ExceptionHandler(value = {Exception.class, RuntimeException.class})
     public void handleException(HttpServletResponse response, Exception e) throws IOException {
-        log.warn("Unhandled error. Message: " + e.getMessage());
+        log.warn("Unhandled error. Message new: " + e.getMessage());
+        response.setCharacterEncoding(StandardCharsets.UTF_8.name());
         response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value());
         response.getWriter().println(e.getMessage());
     }
